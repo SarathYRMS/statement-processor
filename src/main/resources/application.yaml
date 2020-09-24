@@ -1,0 +1,38 @@
+#Batch Configuration
+spring:
+  batch:
+    initialize-schema: NEVER
+    job:
+      enabled: false
+
+#Database Configuration
+  h2:
+    console:
+      enabled: true
+    datasource:
+      url: jdbc:h2:mem:statementprocessor;DB_CLOSE_ON_EXIT=FALSE
+      username: sa
+      password:
+
+#Liquibase Configuration
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog.xml
+
+#Chunk size
+  xml:
+    chunk:
+      size: 5
+
+#Cron Job Scheduler expression
+  cron:
+    csvscheduler:
+      value: 6 * * * * *
+    xmlscheduler:
+      value: 5 * * * * *
+
+  file:
+    directory:
+      current: ./input/
+      input: input
+      processed: processed
+      error: error
